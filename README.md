@@ -23,7 +23,7 @@ A fresh key pair is generated for every session, so even if one session's keys w
 
 ## Requirements
 
-- Python 3
+- Python
 - The `cryptography` library
 
 Install the dependency with:
