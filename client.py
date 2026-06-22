@@ -21,7 +21,7 @@ def receive_messages(sock, aes_key, recv_counter_ref):
 
             if not valid:
                 print(
-                    f"[CLIENT] ⚠  Replay attack detected! "
+                    f"[CLIENT]   Replay attack detected! "
                     f"Expected counter {recv_counter_ref[0]}, got {received_counter}"
                 )
                 continue
@@ -63,7 +63,7 @@ def perform_handshake(sock):
         sock.close()
         return None
 
-    print("[CLIENT] ✅ Signature verified - server identity confirmed!")
+    print("[CLIENT]    Signature verified - server identity confirmed!")
 
     signature = crypto_utils.sign_public_key(identity_private, ecdh_public_bytes)
     sock.send(ecdh_public_bytes + signature)

@@ -1,4 +1,3 @@
-
 import os
 import crypto_utils
 
@@ -44,7 +43,7 @@ def run_demo():
     aes_key = crypto_utils.derive_aes_key(shared_secret)
 
     print(f"  AES-GCM session key: {GREEN}{aes_key.hex()[:32]}...{RESET}")
-    print(f"  {GREEN}✅  Shared key established via ECDH + HKDF{RESET}\n")
+    print(f"  {GREEN}   Shared key established via ECDH + HKDF{RESET}\n")
 
     print(f"{BOLD}  STEP 2 - Alice encrypts a message{RESET}")
     separator("-", 60)
@@ -63,7 +62,7 @@ def run_demo():
     try:
         decrypted = crypto_utils.decrypt(aes_key, encrypted)
         print(f"  Bob receives     : \"{GREEN}{decrypted}{RESET}\"")
-        print(f"  {GREEN}✅  Message delivered and verified successfully{RESET}\n")
+        print(f"  {GREEN}   Message delivered and verified successfully{RESET}\n")
     except Exception as e:
         print(f"  {RED}❌  Unexpected failure: {e}{RESET}\n")
 
@@ -92,8 +91,8 @@ def run_demo():
         print(f"  {RED}❌  DANGER: Tampered message accepted: \"{decrypted_tampered}\"{RESET}")
         print(f"  {RED}    Integrity check FAILED - AES-GCM is broken!{RESET}")
     except Exception:
-        print(f"  {RED}  ⚠  Decryption raised: InvalidTag - authentication failed{RESET}")
-        print(f"  {GREEN}{BOLD}  ✅  Tampered message REJECTED - Bob never sees it!{RESET}")
+        print(f"  {RED}    Decryption raised: InvalidTag - authentication failed{RESET}")
+        print(f"  {GREEN}{BOLD}     Tampered message REJECTED - Bob never sees it!{RESET}")
         print(f"  {GREEN}     AES-GCM integrity protection working correctly.{RESET}\n")
 
     print(f"{BOLD}  STEP 6 - Attacker tampers with the nonce{RESET}")
@@ -106,15 +105,15 @@ def run_demo():
         crypto_utils.decrypt(aes_key, bytes(tampered_nonce))
         print(f"  {RED}❌  Tampered nonce accepted - integrity FAILED!{RESET}")
     except Exception:
-        print(f"  {GREEN}{BOLD}  ✅  Tampered nonce REJECTED - Bob never sees it!{RESET}")
+        print(f"  {GREEN}{BOLD}     Tampered nonce REJECTED - Bob never sees it!{RESET}")
         print(f"  {GREEN}     Even modifying the nonce breaks authentication.{RESET}\n")
 
     separator()
     print(f"\n{BOLD}  SUMMARY{RESET}\n")
-    print(f"  {GREEN}✅  Unmodified message: accepted and decrypted correctly{RESET}")
-    print(f"  {GREEN}✅  1-byte ciphertext modification: rejected immediately{RESET}")
-    print(f"  {GREEN}✅  Nonce modification: rejected immediately{RESET}")
-    print(f"  {GREEN}✅  Bob never receives any tampered content{RESET}")
+    print(f"  {GREEN}   Unmodified message: accepted and decrypted correctly{RESET}")
+    print(f"  {GREEN}   1-byte ciphertext modification: rejected immediately{RESET}")
+    print(f"  {GREEN}   Nonce modification: rejected immediately{RESET}")
+    print(f"  {GREEN}   Bob never receives any tampered content{RESET}")
     print(f"\n  AES-GCM guarantees both confidentiality AND integrity.")
     print(f"  An attacker cannot modify messages without detection.")
     separator()

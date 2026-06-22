@@ -62,7 +62,7 @@ def simulate_session(session_number):
     del alice_shared
     del bob_shared
 
-    print(f"\n  {YELLOW}⚠  Session ended — ephemeral keys permanently discarded{RESET}")
+    print(f"\n  {YELLOW}  Session ended — ephemeral keys permanently discarded{RESET}")
 
     return aes_key
 
@@ -77,7 +77,7 @@ def run_demo():
     print(f"""
   {BOLD}What is Forward Secrecy?{RESET}
   Each session generates a brand new ECDH key pair.
-  Session keys are never stored — discarded after use.
+  Session keys are never stored - discarded after use.
   Stealing today's key gives an attacker NOTHING about
   any past or future session.
 
@@ -92,7 +92,7 @@ def run_demo():
 
     
     separator("=", 60)
-    print(f"\n{BOLD}  PROOF — All 3 Session Keys Are Completely Different{RESET}\n")
+    print(f"\n{BOLD}  PROOF - All 3 Session Keys Are Completely Different{RESET}\n")
 
     for i, key in enumerate(session_keys, 1):
         print(f"  Session {i} AES key: {CYAN}{key.hex()}{RESET}")
@@ -103,13 +103,12 @@ def run_demo():
     all_unique = len(set([k.hex() for k in session_keys])) == len(session_keys)
 
     if all_unique:
-        print(f"  {GREEN}{BOLD}✅  All 3 session keys are completely different.{RESET}")
+        print(f"  {GREEN}{BOLD}   All 3 session keys are completely different.{RESET}")
     else:
         print(f"  {RED}❌  Keys repeated — something is wrong!{RESET}")
 
-    # ── Attack Scenario ───────────────────────────────────────────
     separator("-", 60)
-    print(f"\n{BOLD}  ATTACK SCENARIO — What if Session 3 key is stolen?{RESET}\n")
+    print(f"\n{BOLD}  ATTACK SCENARIO - What if Session 3 key is stolen?{RESET}\n")
 
     print(f"  Attacker captures Session 3 AES key:")
     print(f"  {RED}{session_keys[2].hex()}{RESET}\n")
@@ -126,7 +125,7 @@ def run_demo():
         print(f"  {RED}❌  Decryption succeeded — forward secrecy FAILED!{RESET}")
 
     except Exception:
-        print(f"  {GREEN}{BOLD}  ✅  Decryption FAILED — Session 1 is protected!{RESET}")
+        print(f"  {GREEN}{BOLD}     Decryption FAILED — Session 1 is protected!{RESET}")
         print(f"  {GREEN}  The stolen key is useless against past sessions.{RESET}")
 
     print(f"\n  Can attacker decrypt Session 2 messages?")
@@ -138,17 +137,16 @@ def run_demo():
         print(f"  {RED}❌  Decryption succeeded — forward secrecy FAILED!{RESET}")
 
     except Exception:
-        print(f"  {GREEN}{BOLD}  ✅  Decryption FAILED — Session 2 is protected!{RESET}")
+        print(f"  {GREEN}{BOLD}     Decryption FAILED — Session 2 is protected!{RESET}")
         print(f"  {GREEN}  The stolen key is useless against past sessions.{RESET}")
 
 
     separator("=", 60)
     print(f"\n{BOLD}  SUMMARY{RESET}\n")
-    print(f"  {GREEN}✅  Every session uses unique ephemeral ECDH key pairs{RESET}")
-    print(f"  {GREEN}✅  Every session derives a completely different AES key{RESET}")
-    print(f"  {GREEN}✅  Session keys are discarded immediately after use{RESET}")
-    print(f"  {GREEN}✅  Compromising one session key exposes ZERO past data{RESET}")
-    print(f"\n  This is Perfect Forward Secrecy in action.")
+    print(f"  {GREEN}   Every session uses unique ephemeral ECDH key pairs{RESET}")
+    print(f"  {GREEN}   Every session derives a completely different AES key{RESET}")
+    print(f"  {GREEN}   Session keys are discarded immediately after use{RESET}")
+    print(f"  {GREEN}   Compromising one session key exposes ZERO past data{RESET}")
     separator("=", 60)
 
 

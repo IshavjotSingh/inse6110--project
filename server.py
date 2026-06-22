@@ -21,7 +21,7 @@ def receive_messages(conn, aes_key, recv_counter_ref):
 
             if not valid:
                 print(
-                    f"[SERVER] ⚠  Replay attack detected! "
+                    f"[SERVER]   Replay attack detected! "
                     f"Expected counter {recv_counter_ref[0]}, got {received_counter}"
                 )
                 continue
@@ -71,7 +71,7 @@ def perform_handshake(conn):
         conn.close()
         return None
 
-    print("[SERVER] ✅ Signature verified — client identity confirmed!")
+    print("[SERVER]   Signature verified — client identity confirmed!")
 
     client_ecdh_pubkey = crypto_utils.deserialize_public_key(client_ecdh_bytes)
     shared_secret      = crypto_utils.compute_shared_secret(ecdh_private, client_ecdh_pubkey)

@@ -45,7 +45,7 @@ def run_demo():
     )
     aes_key = crypto_utils.derive_aes_key(shared)
     print(f"  Session key: {GREEN}{aes_key.hex()[:32]}...{RESET}")
-    print(f"  {GREEN}✅  Shared key established{RESET}\n")
+    print(f"  {GREEN}   Shared key established{RESET}\n")
 
     
     print(f"{BOLD}  STEP 1 - Normal conversation (counters 0, 1, 2){RESET}")
@@ -73,7 +73,7 @@ def run_demo():
         if valid:
             print(f"  Msg {i} | Counter: {CYAN}{counter}{RESET} | "
                   f"Content: \"{GREEN}{decrypted}{RESET}\"")
-            print(f"         | {GREEN}✅  Accepted — counter matches expected{RESET}")
+            print(f"         | {GREEN}   Accepted — counter matches expected{RESET}")
             bob_expected_counter += 1
         else:
             print(f"  Msg {i} | {RED}❌  Rejected{RESET}")
@@ -96,7 +96,7 @@ def run_demo():
     else:
         print(f"  Bob received counter : {RED}{counter}{RESET}")
         print(f"  Bob expected counter : {GREEN}{bob_expected_counter}{RESET}")
-        print(f"  {GREEN}{BOLD}  ✅  Replay REJECTED — counter mismatch detected!{RESET}")
+        print(f"  {GREEN}{BOLD}     Replay REJECTED — counter mismatch detected!{RESET}")
         print(f"  {GREEN}     $500 transfer was NOT processed again.{RESET}")
 
     
@@ -113,7 +113,7 @@ def run_demo():
     else:
         print(f"  Bob received counter : {RED}{counter0}{RESET}")
         print(f"  Bob expected counter : {GREEN}{bob_expected_counter}{RESET}")
-        print(f"  {GREEN}{BOLD}  ✅  Replay REJECTED - counter mismatch detected!{RESET}")
+        print(f"  {GREEN}{BOLD}     Replay REJECTED - counter mismatch detected!{RESET}")
 
 
     print(f"\n{BOLD}  STEP 4 - Conversation continues normally{RESET}")
@@ -128,15 +128,15 @@ def run_demo():
     if valid_next:
         print(f"  Msg {bob_expected_counter} | Counter: {CYAN}{cnt_next}{RESET} | "
               f"Content: \"{GREEN}{dec_next}{RESET}\"")
-        print(f"         | {GREEN}✅  Accepted — legitimate message passes through{RESET}")
+        print(f"         | {GREEN}   Accepted — legitimate message passes through{RESET}")
 
 
     separator()
     print(f"\n{BOLD}  SUMMARY{RESET}\n")
-    print(f"  {GREEN}✅  Legitimate messages accepted in correct order{RESET}")
-    print(f"  {GREEN}✅  Replayed $500 transfer rejected - money safe{RESET}")
-    print(f"  {GREEN}✅  All replayed messages rejected by counter check{RESET}")
-    print(f"  {GREEN}✅  Conversation resumes normally after attack attempt{RESET}")
+    print(f"  {GREEN}   Legitimate messages accepted in correct order{RESET}")
+    print(f"  {GREEN}   Replayed $500 transfer rejected - money safe{RESET}")
+    print(f"  {GREEN}   All replayed messages rejected by counter check{RESET}")
+    print(f"  {GREEN}   Conversation resumes normally after attack attempt{RESET}")
     print(f"\n  Counter is inside the encrypted payload - attacker")
     print(f"  cannot modify it without breaking AES-GCM integrity.")
     separator()
