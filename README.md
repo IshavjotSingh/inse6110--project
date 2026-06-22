@@ -14,12 +14,12 @@ A fresh key pair is generated for every session, so even if one session's keys w
 
 ## Files
 
-- `crypto_utils.py` — all the cryptographic logic lives here: key exchange, key derivation, signing, and the counter-based encrypt/decrypt functions used by both sides
-- `server.py` — the server program; listens for a client and handles the secure session
-- `client.py` — the client program; connects to the server and sends encrypted messages
-- `forward_secrecy_demo.py` — shows that compromising one session's keys doesn't break other sessions
-- `replay_demo.py` — shows that a captured message replayed back to the receiver gets rejected
-- `tamper_demo.py` — shows that modifying a ciphertext in transit is detected and the message is dropped
+- `crypto_utils.py` - all the cryptographic logic lives here: key exchange, key derivation, signing, and the counter-based encrypt/decrypt functions used by both sides
+- `server.py` - the server program; listens for a client and handles the secure session
+- `client.py` - the client program; connects to the server and sends encrypted messages
+- `forward_secrecy_demo.py` - shows that compromising one session's keys doesn't break other sessions
+- `replay_demo.py` - shows that a captured message replayed back to the receiver gets rejected
+- `tamper_demo.py` - shows that modifying a ciphertext in transit is detected and the message is dropped
 
 ## Requirements
 
